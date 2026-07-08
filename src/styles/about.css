@@ -1,0 +1,144 @@
+#about {
+  padding: 120px clamp(2rem, 8vw, 8rem);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* Image side */
+.about-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.about-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  display: block;
+  filter: grayscale(8%);
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* About Image — Subtle 3D on Hover */
+.about-image-wrap:hover .about-img {
+  transform: perspective(800px) rotateY(-4deg) rotateX(2deg) scale(1.02);
+}
+
+/* Decorative corner accents */
+.about-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px;
+  width: 60px; height: 60px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  border-radius: 4px 0 0 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.about-image-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -12px; right: -12px;
+  width: 60px; height: 60px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-radius: 0 0 4px 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Floating experience badge on image */
+.about-badge {
+  position: absolute;
+  bottom: 2rem;
+  right: -1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.about-badge-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.about-badge-label {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+/* Text side */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.about-bio {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 520px;
+}
+.about-quote {
+  padding: 1.5rem 1.75rem;
+  border-left: 2px solid var(--accent);
+  background: var(--bg-secondary);
+  border-radius: 0 14px 14px 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.about-competencies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.competency-chip {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.competency-chip:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  background: var(--accent-glow);
+}
+
+@media (max-width: 768px) {
+  #about { padding: 80px 1.5rem; min-height: auto; }
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-image-wrap { max-width: 280px; }
+  .about-badge { right: -0.5rem; }
+  .about-bio { max-width: 100%; }
+}

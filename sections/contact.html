@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .contact-box {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            padding: 1.5rem;
+        }
+        .contact-box:hover {
+            transform: translateZ(10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #4B5EAA, #7C3AED);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            border-radius: 12px;
+        }
+        .contact-box:hover::before {
+            opacity: 0.8;
+            animation: pulse 3s ease infinite;
+        }
+        .input-field {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: rgba(124, 58, 237, 0.8);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #6366F1, #A855F7);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.4);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.1)
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+        .contact-box, .input-field, .btn-primary {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        .contact-box:nth-child(1) { animation-delay: 0.1s; }
+        .contact-box:nth-child(2) { animation-delay: 0.2s; }
+        .contact-box:nth-child(3) { animation-delay: 0.3s; }
+        .input-field:nth-child(1) { animation-delay: 0.4s; }
+        .input-field:nth-child(2) { animation-delay: 0.5s; }
+        .input-field:nth-child(3) { animation-delay: 0.6s; }
+        .btn-primary { animation-delay: 0.7s; }
+        .section-header {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #6366F1, #A855F7);
+            border-radius: 3px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <section class="py-16 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-12">
+                <div class="section-header inline-block">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-3">
+                        <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Get In Touch</span>
+                    </h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                        Have a project in mind or want to collaborate? Feel free to reach out!
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <!-- Contact Boxes -->
+                <div class="w-full lg:w-2/5 space-y-4">
+                    <div class="contact-box rounded-xl">
+                        <div class="contact-item">
+                            <div class="bg-indigo-900/50 p-3 rounded-lg flex-shrink-0">
+                                <i class="fas fa-envelope text-xl text-indigo-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-md font-semibold">Email Me</h3>
+                                <a href="mailto:farhathullahmn@gmail.com" class="text-gray-300 hover:text-indigo-400 transition text-sm">
+                                    farhathullahmn@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-box rounded-xl">
+                        <div class="contact-item">
+                            <div class="bg-purple-900/50 p-3 rounded-lg flex-shrink-0">
+                                <i class="fas fa-phone text-xl text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-md font-semibold">Call Me</h3>
+                                <a href="tel:+919188044462" class="text-gray-300 hover:text-purple-400 transition text-sm">
+                                    +91 9188044462
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-box rounded-xl">
+                        <div class="flex flex-col gap-4">
+                            <div class="contact-item">
+                                <div class="bg-indigo-900/50 p-3 rounded-lg flex-shrink-0">
+                                    <i class="fas fa-share-alt text-xl text-indigo-400"></i>
+                                </div>
+                                <h3 class="text-md font-semibold">Social Media</h3>
+                            </div>
+                            <div class="flex space-x-3 pl-12">
+                                <a href="https://www.linkedin.com/in/farhathullah-najeeb-954a0b238" target="_blank" 
+                                   class="bg-gray-800 p-2.5 rounded-lg hover:bg-indigo-600 transition-all duration-300">
+                                    <i class="fab fa-linkedin text-lg"></i>
+                                </a>
+                                <a href="https://github.com/Farhathullah-Najeeb" target="_blank" 
+                                   class="bg-gray-800 p-2.5 rounded-lg hover:bg-purple-600 transition-all duration-300">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                                <a href="https://www.instagram.com/farhathullah_najeeb" target="_blank" 
+                                   class="bg-gray-800 p-2.5 rounded-lg hover:bg-pink-600 transition-all duration-300">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="w-full lg:w-3/5">
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="form-group">
+                                <label for="name" class="block text-sm font-medium text-gray-400">Your Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name"
+                                    placeholder="John Doe" 
+                                    required 
+                                    class="input-field w-full px-4 py-3 rounded-lg text-white focus:outline-none"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="block text-sm font-medium text-gray-400">Your Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    placeholder="john@example.com" 
+                                    required 
+                                    class="input-field w-full px-4 py-3 rounded-lg text-white focus:outline-none"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="block text-sm font-medium text-gray-400">Subject</label>
+                            <input 
+                                type="text" 
+                                id="subject"
+                                placeholder="Project Inquiry" 
+                                required 
+                                class="input-field w-full px-4 py-3 rounded-lg text-white focus:outline-none"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="block text-sm font-medium text-gray-400">Your Message</label>
+                            <textarea 
+                                id="message"
+                                placeholder="Hello, I'd like to talk about..." 
+                                required 
+                                rows="4" 
+                                class="input-field w-full px-4 py-3 rounded-lg text-white focus:outline-none"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button 
+                                type="submit" 
+                                class="btn-primary w-full py-3 rounded-lg font-semibold text-white"
+                            >
+                                <span class="relative z-10">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.contact-box').forEach((box, index) => {
+                box.style.animation = `float ${5 + Math.random() * 2}s ease-in-out infinite`;
+                box.style.animationDelay = `${index * 0.15}s`;
+            });
+
+            const contactContainer = document.querySelector('.w-full.lg\\:w-2\\/5');
+            contactContainer.addEventListener('mousemove', (e) => {
+                const boxes = document.querySelectorAll('.contact-box');
+                boxes.forEach(box => {
+                    const rect = box.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const rotateX = -(y - rect.height / 2) / 20;
+                    const rotateY = (x - rect.width / 2) / 20;
+
+                    box.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1)`;
+                    box.style.transition = 'transform 0.1s ease';
+                });
+            });
+
+            contactContainer.addEventListener('mouseleave', () => {
+                const boxes = document.querySelectorAll('.contact-box');
+                boxes.forEach(box => {
+                    box.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                    box.style.transition = 'transform 0.3s ease';
+                });
+            });
+
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
