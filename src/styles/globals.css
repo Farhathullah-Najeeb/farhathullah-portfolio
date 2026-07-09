@@ -13,7 +13,7 @@
   --color-text-tertiary: #71717a; /* gray-400 */
   
   --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-heading: 'Bebas Neue', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-serif: 'Playfair Display', serif;
   
   --animate-spin-slow: spin-slow 25s linear infinite;
@@ -161,6 +161,8 @@ body {
 /* Custom Heading Display Class */
 .heading-display {
   font-family: var(--font-heading), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 /* Let's Talk button */
@@ -181,4 +183,39 @@ body {
 .premium-card:hover {
   border-color: rgba(255, 255, 255, 0.15);
   background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Premium Card hover light shine sweep */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 10;
+}
+.group:hover .shine-effect::after {
+  animation: card-shine-animation 0.9s ease-out forwards;
+}
+
+@keyframes card-shine-animation {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
 }

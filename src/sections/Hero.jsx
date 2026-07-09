@@ -45,10 +45,10 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-1"
           >
-            <h1 className="text-5xl sm:text-8xl md:text-9xl font-normal leading-[0.85] text-white uppercase heading-display tracking-tight">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold leading-[1.0] text-white heading-display tracking-tight">
               Senior Flutter
             </h1>
-            <h1 className="text-5xl sm:text-8xl md:text-9xl font-normal leading-[0.85] text-white uppercase heading-display tracking-tight">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold leading-[1.0] text-white heading-display tracking-tight">
               Developer
             </h1>
           </motion.div>
@@ -71,7 +71,7 @@ export default function Hero() {
             className="flex flex-wrap gap-4 pt-2"
           >
             <a href="#projects">
-              <button class="inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer btn-silver text-xs uppercase tracking-wider h-12 px-6 gap-2 rounded-full hover-target">
+              <button className="inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer btn-silver text-xs uppercase tracking-wider h-12 px-6 gap-2 rounded-full hover-target">
                 View My Work
                 <svg className="lucide lucide-arrow-up-right h-4 w-4" fill="none" height="24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 7h10v10"></path>
@@ -80,7 +80,7 @@ export default function Hero() {
               </button>
             </a>
             <a href={personal.whatsapp} target="_blank" rel="noopener noreferrer">
-              <button class="inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer bg-transparent text-white border border-white/15 hover:bg-white/5 hover:border-white/25 text-xs uppercase tracking-wider h-12 px-6 gap-2 rounded-full hover-target">
+              <button className="inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer bg-transparent text-white border border-white/15 hover:bg-white/5 hover:border-white/25 text-xs uppercase tracking-wider h-12 px-6 gap-2 rounded-full hover-target">
                 Contact Me
                 <svg className="lucide lucide-arrow-up-right h-4 w-4" fill="none" height="24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 7h10v10"></path>

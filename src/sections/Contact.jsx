@@ -36,13 +36,13 @@ export default function Contact() {
               {/* Left Column: Heading & CTA */}
               <div className="lg:col-span-7 space-y-8">
                 <div className="space-y-1">
-                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.9] text-white uppercase heading-display tracking-tight">
+                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.0] text-white heading-display tracking-tight">
                     Let's Create
                   </h2>
-                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.9] text-white uppercase heading-display tracking-tight">
+                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.0] text-white heading-display tracking-tight">
                     Something
                   </h2>
-                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.9] text-white uppercase heading-display tracking-tight">
+                  <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.0] text-white heading-display tracking-tight">
                     Extraordinary
                   </h2>
                 </div>

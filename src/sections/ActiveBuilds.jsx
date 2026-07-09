@@ -15,7 +15,7 @@ export default function ActiveBuilds() {
           <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-500 uppercase block mb-2">
             Active Builds
           </span>
-          <h2 className="text-3xl sm:text-5xl font-normal text-white uppercase heading-display tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white heading-display tracking-tight">
             In-Progress Work
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mt-2">

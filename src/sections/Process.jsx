@@ -45,7 +45,7 @@ export default function Process() {
           <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-500 uppercase block mb-2">
             Workflow
           </span>
-          <h2 className="text-3xl sm:text-5xl font-normal text-white uppercase heading-display tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white heading-display tracking-tight">
             Development Process
           </h2>
           <div className="h-1 w-12 bg-zinc-700 mx-auto rounded-full mt-4"></div>
