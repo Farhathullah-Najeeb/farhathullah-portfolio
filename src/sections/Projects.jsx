@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaApple, FaAndroid } from 'react-icons/fa';
+import { Globe, Smartphone, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 
 export default function Projects() {
@@ -15,17 +16,9 @@ export default function Projects() {
       case "Finance Finzoa":
         return "/finzoa_mockup.png";
       case "Urban Aana":
-        return "/urbanaana_mockup.jpg";
+        return "/urbanaana_mockup.png";
       case "Velocity Homes":
         return "/velocity_mockup.png";
-      case "Sana N Portfolio":
-        return "/sanan_mockup.png";
-      case "VILA":
-        return "/vila_mockup.png";
-      case "Zealosh":
-        return "/zealosh_mockup.png";
-      case "E-Wallet":
-        return "/ewallet_mockup.png";
       default:
         return null;
     }
@@ -54,7 +47,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 bg-transparent relative border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="flex items-end justify-between mb-16">
           <div className="space-y-2">
@@ -65,11 +58,11 @@ export default function Projects() {
               Featured Work
             </h2>
           </div>
-          
-          <a 
-            href="https://github.com/Farhathullah-Najeeb" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+
+          <a
+            href="https://github.com/Farhathullah-Najeeb"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs font-bold text-zinc-400 hover:text-white uppercase tracking-wider transition-colors duration-300 group hover-target"
           >
             Explore All Projects
@@ -77,153 +70,151 @@ export default function Projects() {
           </a>
         </div>
 
-        {/* Dynamic Stacking Project Cards Stack */}
-        <div className="relative mt-8 flex flex-col items-center">
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {completedProjects.map((project, idx) => {
             const projectImg = getProjectImage(project.name);
             const isClickable = !nonClickableProjects.includes(project.name);
             const isMobile = mobileApps.includes(project.name);
             const mobileLinks = getMobileLinks(project.name);
             const projectUrl = project.link || "https://github.com/Farhathullah-Najeeb";
+            const badgeLabel = project.badge || "LIVE";
 
-            // Visual elements of the card (avoiding nested <a> tags)
             return (
-              <div 
+              <motion.div
                 key={project.id}
-                className="sticky w-full max-w-4xl mx-auto mb-20 sm:mb-32 origin-top"
-                style={{ 
-                  top: `calc(100px + ${idx * 24}px)`,
-                  perspective: "1200px" 
-                }}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.55, delay: (idx % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={isClickable ? { y: -6 } : {}}
+                className="group relative flex flex-col overflow-hidden rounded-[2rem] bg-[#16171a] border border-white/5 hover:border-white/15 transition-colors duration-500 shadow-[0_30px_70px_rgba(0,0,0,0.5)]"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={isClickable ? { y: -6, rotateX: 3, rotateY: -1.5, scale: 1.005 } : {}}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <div className="group block relative flex flex-col md:flex-row h-auto overflow-hidden p-0 bg-[#16171a] border border-white/5 group-hover:border-white/15 transition-all duration-500 rounded-[2rem] shadow-[0_30px_70px_rgba(0,0,0,0.6)]">
-                    
-                    {/* Left Side screenshot wrapper */}
-                    <div className="w-full md:w-3/5 p-4 flex items-center justify-center shrink-0">
-                      {isClickable ? (
-                        <a 
-                          href={projectUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="aspect-video w-full relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-950 shadow-inner shine-effect block hover-target"
-                        >
-                          {projectImg ? (
-                            <img 
-                              alt={project.name} 
-                              className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-700 opacity-95 group-hover:opacity-100 w-full h-full"
-                              src={projectImg}
-                            />
-                          ) : (
-                            <div className="flex flex-col items-center justify-center p-8 text-center bg-dot-pattern w-full h-full">
-                              <span className="text-4xl text-glow mb-2">💻</span>
-                              <span className="text-sm font-bold tracking-widest text-white uppercase font-sans">{project.name}</span>
-                            </div>
-                          )}
-                        </a>
+                {/* Image */}
+                <div className="relative aspect-video w-full overflow-hidden">
+                  {isClickable ? (
+                    <a
+                      href={projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 block hover-target"
+                    >
+                      {projectImg ? (
+                        <img
+                          alt={project.name}
+                          src={projectImg}
+                          className="h-full w-full object-cover object-top opacity-95 group-hover:opacity-100 group-hover:scale-[1.04] transition-transform duration-700"
+                        />
                       ) : (
-                        <div className="aspect-video w-full relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-950 shadow-inner select-none cursor-default">
-                          <div className="flex flex-col items-center justify-center p-8 text-center bg-dot-pattern w-full h-full">
-                            <span className="text-4xl text-glow mb-2">💻</span>
-                            <span className="text-sm font-bold tracking-widest text-zinc-500 uppercase font-sans">{project.name}</span>
-                          </div>
+                        <div className="flex h-full w-full flex-col items-center justify-center bg-dot-pattern p-8 text-center">
+                          <span className="text-glow mb-2 text-4xl">💻</span>
+                          <span className="font-sans text-sm font-bold uppercase tracking-widest text-white">
+                            {project.name}
+                          </span>
                         </div>
                       )}
+                    </a>
+                  ) : (
+                    <div className="flex h-full w-full flex-col items-center justify-center bg-dot-pattern p-8 text-center select-none cursor-default">
+                      <span className="text-glow mb-2 text-4xl">💻</span>
+                      <span className="font-sans text-sm font-bold uppercase tracking-widest text-zinc-500">
+                        {project.name}
+                      </span>
                     </div>
+                  )}
 
-                    {/* Right Side details */}
-                    <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                      <div className="space-y-4">
-                        <div className="space-y-1">
-                          <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
-                            {project.tags.join(" / ")}
-                          </p>
-                          <h3 className="text-xl sm:text-2xl font-extrabold text-white group-hover:text-zinc-200 transition-colors duration-300 heading-display tracking-wide">
-                            {isClickable ? (
-                              <a 
-                                href={projectUrl} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="hover-target hover:underline decoration-white/20"
-                              >
-                                {project.name}
-                              </a>
-                            ) : (
-                              <span className="cursor-default select-none">{project.name}</span>
-                            )}
-                          </h3>
-                        </div>
-                        <p className="text-xs sm:text-sm text-zinc-400 font-medium leading-relaxed">
-                          {project.desc}
-                        </p>
-                      </div>
-
-                      {/* Footer buttons row (safely sibling links) */}
-                      <div className="flex flex-wrap items-center justify-between pt-6 border-t border-white/5 mt-6 gap-4">
-                        {isMobile && mobileLinks ? (
-                          // Mobile download badges side-by-side
-                          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-                            <a 
-                              href={mobileLinks.ios} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
-                              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-xs font-semibold text-white transition-all hover-target shrink-0"
-                            >
-                              <FaApple className="h-4 w-4 text-zinc-300" />
-                              App Store
-                            </a>
-                            <a 
-                              href={mobileLinks.android} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
-                              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-xs font-semibold text-white transition-all hover-target shrink-0"
-                            >
-                              <FaAndroid className="h-4 w-4 text-zinc-300" />
-                              Google Play
-                            </a>
-                          </div>
-                        ) : isClickable ? (
-                          // Standard web link button
-                          <a 
-                            href={projectUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="flex items-center justify-between w-full hover-target"
-                          >
-                            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors duration-300 uppercase tracking-wider">
-                              Launch Site
-                            </span>
-                            <div className="h-10 w-10 rounded-full border border-white/10 group-hover:border-white/30 bg-transparent flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#121316] transition-all duration-500 shrink-0">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                                <path d="M7 7h10v10"></path>
-                                <path d="M7 17 17 7"></path>
-                              </svg>
-                            </div>
-                          </a>
-                        ) : (
-                          // Non-clickable case footer details
-                          <div className="flex items-center justify-between w-full select-none cursor-default">
-                            <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-                              Internal Release
-                            </span>
-                            <span className="text-[10px] px-2.5 py-0.5 rounded-full border border-white/5 bg-white/[0.02] text-zinc-500 font-bold uppercase tracking-wider">
-                              Offline
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
+                  {/* Status badge */}
+                  <div className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                    <span className={`h-1.5 w-1.5 rounded-full ${isClickable ? 'bg-[#D4AF37]' : 'bg-zinc-500'}`} />
+                    {isClickable ? badgeLabel : 'OFFLINE'}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-1 flex-col justify-between p-6 sm:p-7">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]/70">
+                      {isMobile ? <Smartphone className="h-3 w-3" /> : <Globe className="h-3 w-3" />}
+                      {isMobile ? 'Mobile App' : 'Website'}
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-extrabold text-white heading-display tracking-wide group-hover:text-zinc-200 transition-colors duration-300">
+                      {isClickable ? (
+                        <a
+                          href={projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover-target hover:underline decoration-white/20"
+                        >
+                          {project.name}
+                        </a>
+                      ) : (
+                        <span className="cursor-default select-none">{project.name}</span>
+                      )}
+                    </h3>
+
+                    <p className="text-xs sm:text-[13px] leading-relaxed text-zinc-400 font-medium">
+                      {project.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/5 bg-white/[0.02] px-2.5 py-1 text-[10px] font-semibold text-zinc-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Footer action row */}
+                  <div className="mt-6 border-t border-white/5 pt-5">
+                    {isMobile && mobileLinks ? (
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <a
+                          href={mobileLinks.ios}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white transition-all hover:border-white/20 hover:bg-white/10 hover-target"
+                        >
+                          <FaApple className="h-4 w-4 text-zinc-300" />
+                          App Store
+                        </a>
+                        <a
+                          href={mobileLinks.android}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white transition-all hover:border-white/20 hover:bg-white/10 hover-target"
+                        >
+                          <FaAndroid className="h-4 w-4 text-zinc-300" />
+                          Play Store
+                        </a>
+                      </div>
+                    ) : isClickable ? (
+                      <a
+                        href={projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex w-full items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black transition-transform hover:scale-[1.02] hover-target"
+                      >
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                        Launch Site
+                      </a>
+                    ) : (
+                      <div className="flex items-center justify-between select-none cursor-default">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                          Internal Release
+                        </span>
+                        <span className="rounded-full border border-white/5 bg-white/[0.02] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
+                          Offline
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
             );
           })}
         </div>
