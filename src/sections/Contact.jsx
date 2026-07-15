@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiPhone, FiMapPin, FiGithub } from 'react-icons/fi';
+import { FiPhone, FiMapPin, FiGithub, FiInstagram } from 'react-icons/fi';
 import { personal } from '../data/portfolioData';
 
 export default function Contact() {
@@ -109,6 +109,21 @@ export default function Contact() {
                     </span>
                     <a className="text-sm font-bold text-[#1A1A1A] hover:underline decoration-zinc-400 transition-colors duration-300 hover-target" href={personal.github} target="_blank" rel="noopener noreferrer">
                       github.com/Farhathullah-Najeeb
+                    </a>
+                  </div>
+                </div>
+
+                {/* Instagram */}
+                <div className="flex items-center gap-4 group">
+                  <div className="h-10 w-10 rounded-xl bg-stone-50 border-2 border-[#1A1A1A] flex items-center justify-center text-[#1A1A1A] group-hover:bg-yellow-100 transition-colors duration-300 shadow-[2px_2px_0_0_#1A1A1A]">
+                    <FiInstagram className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-bold text-zinc-500 block uppercase tracking-widest mb-0.5 font-mono">
+                      Instagram Profile
+                    </span>
+                    <a className="text-sm font-bold text-[#1A1A1A] hover:underline decoration-zinc-400 transition-colors duration-300 hover-target" href={personal.instagram} target="_blank" rel="noopener noreferrer">
+                      instagram.com/farhathullah_najeeb
                     </a>
                   </div>
                 </div>
