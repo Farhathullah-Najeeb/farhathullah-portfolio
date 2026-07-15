@@ -39,6 +39,15 @@ export default function Footer() {
             >
               <FiGithub className="h-4.5 w-4.5" />
             </a>
+            <a 
+              aria-label="Instagram" 
+              className="text-zinc-600 hover:text-[#1A1A1A] hover:bg-yellow-100 p-1.5 border border-transparent hover:border-[#1A1A1A]/10 rounded-lg transition-all duration-300 hover-target" 
+              href={personal.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <FiInstagram className="h-4.5 w-4.5" />
+            </a>
           </div>
         </div>
 

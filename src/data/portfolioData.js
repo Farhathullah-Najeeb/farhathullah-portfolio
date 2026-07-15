@@ -17,7 +17,7 @@ export const personal = {
   linkedin: "https://www.linkedin.com/in/farhathullah-najeeb-954a0b238",
   github: "https://github.com/Farhathullah-Najeeb",
   whatsapp: "https://wa.me/919188044462",
-  instagram: "https://www.instagram.com/farhathullah_najeeb",
+  instagram: "https://www.instagram.com/farhathullah_najeeb?igsh=MWJzYms1ZjdmNTF4eQ%3D%3D&utm_source=qr",
   heroImage: "/my.jpg",
   aboutImage: "/myimage.jpeg",
 };
