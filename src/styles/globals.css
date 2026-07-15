@@ -1,32 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Caveat:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #121316;
-  --color-bg-secondary: #16171a;
-  --color-bg-tertiary: #1c1d22;
-  --color-accent: #ffffff; /* Monochrome White */
-  --color-accent-light: #e2e8f0;
-  --color-accent-glow: rgba(255, 255, 255, 0.03);
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #f4f4f5; /* light grey */
-  --color-text-tertiary: #71717a; /* gray-400 */
+  --color-bg-primary: #FAF8F5; /* Warm Ivory/Cream Paper */
+  --color-bg-secondary: #FFFFFF; /* Clean white sheets */
+  --color-bg-tertiary: #F1EFEA; /* Slightly darker drawing sheet */
+  --color-accent: #1A1A1A; /* Charcoal Ink */
+  --color-accent-light: #404040;
+  --color-accent-glow: rgba(0, 0, 0, 0.02);
+  --color-text-primary: #1A1A1A; /* Charcoal Ink */
+  --color-text-secondary: #404040;
+  --color-text-tertiary: #737373;
   
   --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-heading: 'Architects Daughter', cursive;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-handwriting: 'Caveat', cursive;
   
   --animate-spin-slow: spin-slow 25s linear infinite;
   --animate-marquee: marquee 30s linear infinite;
   --animate-bounce-slow: bounce-slow 2s ease-in-out infinite;
-  --animate-drift-1: drift-1 12s ease-in-out infinite;
-  --animate-drift-2: drift-2 15s ease-in-out infinite;
-  --animate-drift-3: drift-3 18s ease-in-out infinite;
-  --animate-drift-4: drift-4 13s ease-in-out infinite;
-  --animate-drift-5: drift-5 16s ease-in-out infinite;
-  --animate-blob-1: pulse-blob-1 18s ease-in-out infinite;
-  --animate-blob-2: pulse-blob-2 22s ease-in-out infinite;
-  --animate-blob-3: pulse-blob-3 20s ease-in-out infinite;
 }
 
 @keyframes spin-slow {
@@ -44,52 +37,11 @@
   50% { transform: translateY(6px); }
 }
 
-@keyframes drift-1 {
-  0%, 100% { transform: translate(0) rotate(15deg); }
-  50% { transform: translate(25px, -35px) rotate(18deg); }
-}
-
-@keyframes drift-2 {
-  0%, 100% { transform: translate(0) rotate(-12deg); }
-  50% { transform: translate(-35px, 25px) rotate(-9deg); }
-}
-
-@keyframes drift-3 {
-  0%, 100% { transform: translate(0) rotate(35deg); }
-  50% { transform: translate(30px, -25px) rotate(32deg); }
-}
-
-@keyframes drift-4 {
-  0%, 100% { transform: translate(0) rotate(-15deg); }
-  50% { transform: translate(-20px, 35px) rotate(-17deg); }
-}
-
-@keyframes drift-5 {
-  0%, 100% { transform: translate(0) rotate(20deg); }
-  50% { transform: translate(35px, -20px) rotate(18deg); }
-}
-
-@keyframes pulse-blob-1 {
-  0%, 100% { transform: translate(0) scale(1); }
-  33% { transform: translate(40px, -60px) scale(1.15); }
-  66% { transform: translate(-30px, 30px) scale(0.9); }
-}
-
-@keyframes pulse-blob-2 {
-  0%, 100% { transform: translate(0) scale(1.1); }
-  50% { transform: translate(-50px, 50px) scale(0.9); }
-}
-
-@keyframes pulse-blob-3 {
-  0%, 100% { transform: translate(0) scale(0.95); }
-  50% { transform: translate(30px, -45px) scale(1.1); }
-}
-
 /* Custom Base Styling */
 html {
   scroll-behavior: smooth;
-  background-color: #121316;
-  color: #f4f4f5;
+  background-color: #FAF8F5;
+  color: #1A1A1A;
 }
 
 body {
@@ -100,47 +52,163 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Background patterns */
-.bg-grid-pattern {
-  background-size: 50px 50px;
+/* Selection Highlighter Style */
+::selection {
+  background-color: #FEF08A; /* yellow-200 */
+  color: #1A1A1A;
+}
+
+/* Graph paper background */
+.graph-paper {
+  background-color: #FAF8F5;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+    linear-gradient(to right, rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 32px 32px;
+/* Sketch borders and cards */
+.sketch-box {
+  border: 2px solid #1A1A1A;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  background-color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-/* Scrollbar styles */
+.sketch-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #1A1A1A;
+}
+
+.sketch-box-active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #1A1A1A;
+}
+
+/* Hard sketch box - no wavy border, but chunky drop-shadow */
+.sketch-card {
+  border: 2px solid #1A1A1A;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  background-color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sketch-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px #1A1A1A;
+}
+
+/* Sticky notes */
+.sticky-note {
+  border: 2px solid #1A1A1A;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sticky-note:hover {
+  transform: translate(-2px, -2px) rotate(1deg);
+  box-shadow: 6px 6px 0px 0px #1A1A1A;
+}
+
+.sticky-yellow {
+  background-color: #FEFDB8;
+  border-radius: 8px 12px 10px 14px / 12px 10px 14px 8px;
+}
+
+.sticky-cyan {
+  background-color: #E0F2FE;
+  border-radius: 12px 8px 14px 10px / 10px 14px 8px 12px;
+}
+
+.sticky-rose {
+  background-color: #FFE4E6;
+  border-radius: 10px 14px 8px 12px / 14px 8px 12px 10px;
+}
+
+/* Polaroid image look */
+.polaroid {
+  background-color: #FFFFFF;
+  border: 2px solid #1A1A1A;
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.15);
+  padding: 12px 12px 36px 12px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Masking Tape */
+.masking-tape {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 100px;
+  height: 24px;
+  background-color: rgba(254, 240, 138, 0.7); /* translucent yellow-200 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+  z-index: 30;
+}
+
+/* Ruling/Lined spiral margins */
+.timeline-notebook-margin {
+  position: relative;
+}
+
+.timeline-notebook-margin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18px;
+  width: 2px;
+  background-color: rgba(220, 38, 38, 0.25); /* Lined paper red line */
+  pointer-events: none;
+}
+
+/* Custom Scrollbar styles */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #121316;
+  background: #FAF8F5;
+  border-left: 1px solid #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border-radius: 3px;
+  background: #C4C2BC;
+  border: 2px solid #FAF8F5;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #1A1A1A;
 }
 
 /* Custom Cursor */
 #cursor {
-  width: 8px;
-  height: 8px;
-  background: #ffffff;
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 2px solid #1A1A1A;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, background-color 0.2s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.1s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  background: #1A1A1A;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 768px) {
@@ -160,62 +228,268 @@ body {
 
 /* Custom Heading Display Class */
 .heading-display {
-  font-family: var(--font-heading), sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.035em;
+  font-family: var(--font-heading), cursive;
+  font-weight: bold;
 }
 
-/* Let's Talk button */
-.btn-silver {
-  color: #121316;
-  background: linear-gradient(#ffffff 0%, #e2e8f0 100%);
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+/* Buttons style */
+.btn-sketch {
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+  border: 2px solid #1A1A1A;
+  box-shadow: 3px 3px 0px 0px #1A1A1A;
+  transition: all 0.2s ease;
+  font-family: var(--font-heading), cursive;
 }
-.btn-silver:hover {
-  background: linear-gradient(#e2e8f0 0%, #ffffff 100%);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+.btn-sketch:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  background-color: #FEF08A; /* yellow-200 */
+}
+.btn-sketch:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #1A1A1A;
 }
 
-.premium-card {
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-.premium-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.02);
+/* Ruler Divider Line */
+.ruler-divider {
+  height: 8px;
+  background-image: repeating-linear-gradient(90deg, #1A1A1A, #1A1A1A 2px, transparent 2px, transparent 10px);
+  border-top: 1px solid #1A1A1A;
+  border-bottom: 1px solid #1A1A1A;
+  opacity: 0.8;
 }
 
-/* Premium Card hover light shine sweep */
-.shine-effect {
+/* --- High-Premium Hand-Drawn & Sketch Animation Effects --- */
+
+/* Wobbly border-radius animation to make outlines feel hand-drawn and alive on hover */
+@keyframes line-wobble {
+  0%, 100% { border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; }
+  25% { border-radius: 240px 22px 240px 22px / 22px 240px 22px 240px; }
+  50% { border-radius: 250px 12px 230px 20px / 20px 230px 12px 250px; }
+  75% { border-radius: 235px 25px 245px 12px / 12px 245px 25px 235px; }
+}
+
+.wobble-hover {
+  transition: border-radius 0.3s ease;
+}
+.wobble-hover:hover {
+  animation: line-wobble 0.6s linear infinite !important;
+}
+
+/* Cyclic Pencil Crosshatch Shading effect on hover */
+@keyframes pencil-scribble {
+  0% { background-position: 0px 0px; }
+  50% { background-position: 4px 4px; }
+  100% { background-position: 8px 0px; }
+}
+
+.scribble-hover {
+  transition: background-image 0.2s ease, background-color 0.2s ease;
+}
+.scribble-hover:hover {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(26, 26, 26, 0.03) 0px,
+    rgba(26, 26, 26, 0.03) 1.5px,
+    transparent 1.5px,
+    transparent 8px
+  ), repeating-linear-gradient(
+    -45deg,
+    rgba(26, 26, 26, 0.03) 0px,
+    rgba(26, 26, 26, 0.03) 1.5px,
+    transparent 1.5px,
+    transparent 8px
+  ) !important;
+  animation: pencil-scribble 0.25s steps(2) infinite;
+}
+
+/* Yellow Marker Highlight Underline */
+.marker-highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+.marker-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: -4px;
+  right: -4px;
+  height: 35%;
+  background-color: rgba(254, 240, 138, 0.7); /* translucent yellow-200 */
+  z-index: -1;
+  border-radius: 4px 10px 4px 8px / 6px 4px 8px 5px;
+  transform: rotate(-1deg);
+  pointer-events: none;
+}
+
+/* Coffee Cup Ring Stain background decoration */
+.coffee-stain {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 3px solid rgba(139, 92, 26, 0.08); /* faint coffee brown */
+  border-radius: 50% 48% 52% 47% / 49% 53% 47% 51%;
+  box-shadow: inset 0 0 12px rgba(139, 92, 26, 0.04);
+  filter: blur(0.5px) rotate(22deg);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.coffee-stain::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: 1px dashed rgba(139, 92, 26, 0.05);
+  border-radius: 48% 52% 47% 53% / 52% 47% 53% 48%;
+}
+
+/* Notebook Binder Spiral Rings at the top of cards */
+.spiral-bound-top {
+  position: relative;
+}
+.spiral-bound-top::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  right: 24px;
+  height: 20px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 8px,
+    #1A1A1A 8px,
+    #1A1A1A 10px,
+    #a3a3a3 10px,
+    #a3a3a3 13px,
+    #1A1A1A 13px,
+    #1A1A1A 15px,
+    transparent 15px,
+    transparent 28px
+  );
+  background-size: 28px 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* 3D Skeuomorphic Curled Paper Corner Shadow Effect */
+.curled-corner {
+  position: relative;
+}
+.curled-corner::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 6px;
+  width: 85%;
+  height: 15px;
+  box-shadow: 0 10px 14px rgba(26, 26, 26, 0.28);
+  transform: rotate(3deg) skew(8deg);
+  z-index: -1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+}
+.curled-corner:hover::after {
+  transform: rotate(4.5deg) skew(12deg) translate(0, 2px);
+  box-shadow: 0 14px 18px rgba(26, 26, 26, 0.35);
+}
+
+/* Tech Blueprint Grid Shading - fades in on hover */
+.blueprint-grid-hover {
   position: relative;
   overflow: hidden;
 }
-.shine-effect::after {
+.blueprint-grid-hover::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
+  inset: 0;
+  background-color: #FAF8F5;
+  background-image: 
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
   pointer-events: none;
-  z-index: 10;
 }
-.group:hover .shine-effect::after {
-  animation: card-shine-animation 0.9s ease-out forwards;
+.blueprint-grid-hover:hover::before {
+  opacity: 1;
 }
 
-@keyframes card-shine-animation {
-  0% {
-    left: -150%;
-  }
-  100% {
-    left: 150%;
-  }
+/* Jagged Torn Paper Edge clip path */
+.torn-paper-edge {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 96%, 
+    98% 97.2%, 96% 96.1%, 94% 97.5%, 92% 95.8%, 90% 97%, 
+    88% 96.2%, 86% 97.4%, 84% 95.9%, 82% 97.1%, 80% 96.3%, 
+    78% 97.5%, 76% 95.8%, 74% 97.2%, 72% 96.1%, 70% 97.4%, 
+    68% 96%, 66% 97.3%, 64% 95.9%, 62% 97.1%, 60% 96.3%, 
+    58% 97.5%, 56% 95.9%, 54% 97.2%, 52% 96.1%, 50% 97.4%, 
+    48% 96.1%, 46% 97.3%, 44% 95.9%, 42% 97.2%, 40% 96.2%, 
+    38% 97.5%, 36% 95.9%, 34% 97.2%, 32% 96.1%, 30% 97.4%, 
+    28% 96%, 26% 97.3%, 24% 95.9%, 22% 97.1%, 20% 96.3%, 
+    18% 97.5%, 16% 95.9%, 14% 97.2%, 12% 96.1%, 10% 97.4%, 
+    8% 96.1%, 6% 97.3%, 4% 95.9%, 2% 97.2%, 0% 95.8%
+  );
+}
+
+/* Ripped sheet of paper clip-path (jagged left edge and torn bottom edge) */
+.torn-sheet {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 
+    100% 100%, 
+    98% 99.2%, 96% 98.5%, 94% 99.6%, 92% 98.1%, 90% 99.3%, 88% 98.5%, 86% 99.5%, 84% 98.2%, 82% 99.3%, 80% 98.5%, 78% 99.6%, 76% 98.1%, 74% 99.3%, 72% 98.5%, 70% 99.6%, 68% 98.1%, 66% 99.3%, 64% 98.5%, 62% 99.6%, 60% 98.1%, 58% 99.3%, 56% 98.5%, 54% 99.6%, 52% 98.1%, 50% 99.3%, 48% 98.5%, 46% 99.6%, 44% 98.1%, 42% 99.3%, 40% 98.5%, 38% 99.6%, 36% 98.1%, 34% 99.3%, 32% 98.5%, 30% 99.6%, 28% 98.1%, 26% 99.3%, 24% 98.5%, 22% 99.6%, 20% 98.1%, 18% 99.3%, 16% 98.5%, 14% 99.6%, 12% 98.1%, 10% 99.3%, 8% 98.5%, 6% 99.6%, 4% 98.1%, 2% 99.3%, 
+    0% 100%,
+    1.8% 97%, 0% 94%, 1.8% 91%, 0% 88%, 1.8% 85%, 0% 82%, 1.8% 79%, 0% 76%, 1.8% 73%, 0% 70%, 1.8% 67%, 0% 64%, 1.8% 61%, 0% 58%, 1.8% 55%, 0% 52%, 1.8% 49%, 0% 46%, 1.8% 43%, 0% 40%, 1.8% 37%, 0% 34%, 1.8% 31%, 0% 28%, 1.8% 25%, 0% 22%, 1.8% 19%, 0% 16%, 1.8% 13%, 0% 10%, 1.8% 7%, 0% 4%
+  );
+}
+
+/* Outline + Drop shadow filter for the torn card */
+.torn-card-shadow {
+  filter: 
+    drop-shadow(1.5px 1.5px 0px #1A1A1A) 
+    drop-shadow(-1.5px -0.5px 0px #1A1A1A)
+    drop-shadow(-0.5px -1.5px 0px #1A1A1A)
+    drop-shadow(4px 4px 0px #1A1A1A);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.torn-card-shadow:hover {
+  filter: 
+    drop-shadow(1.5px 1.5px 0px #1A1A1A) 
+    drop-shadow(-1.5px -0.5px 0px #1A1A1A)
+    drop-shadow(-0.5px -1.5px 0px #1A1A1A)
+    drop-shadow(7px 7px 0px #1A1A1A);
+}
+
+/* Organic Hand-Drawn / Hand-Cut paper card styles */
+.sketch-card-base {
+  background-color: #FFFFFF;
+  border: 2px solid #1A1A1A;
+  box-shadow: 4px 4px 0px 0px #1A1A1A;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+.sketch-card-base:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px #1A1A1A;
+}
+
+.sketch-card-var-1 {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.sketch-card-var-2 {
+  border-radius: 20px 240px 20px 240px / 240px 20px 240px 20px;
+}
+
+.sketch-card-var-3 {
+  border-radius: 245px 25px 235px 25px / 25px 235px 25px 245px;
 }

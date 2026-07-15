@@ -1,15 +1,15 @@
 export const personal = {
   name: "Farhathullah Najeeb",
-  title: "Senior Flutter Developer ",
-  subtitle: "Cross-Platform Mobile & Fintech Specialist",
+  title: "Mobile & Software Engineer ",
+  subtitle: "Mobile Apps & Custom Software Specialist",
   typewriterRoles: [
-    "Senior Flutter Developer",
-    "Full-Stack Engineer",
+    "Mobile & Software Engineer",
+    "Full-Stack Developer",
     "Mobile Architect",
     "Fintech Specialist",
     "Real-Time Systems Engineer"
   ],
-  bio: "Senior Flutter Developer and Full-Stack Engineer with 3+ years of experience and 5 production apps live on App Store and Google Play, achieving 4.5+ star ratings with zero critical post-launch defects. Specialist in payment gateways, real-time WebRTC communication, Clean Architecture, and custom web platforms.",
+  bio: "Senior Mobile & Software Engineer with 3+ years of experience and 5 production apps live on App Store and Google Play, achieving 4.5+ star ratings with zero critical post-launch defects. Specialist in payment gateways, real-time WebRTC communication, Clean Architecture, and custom web platforms.",
   quote: "Turning complex financial systems and real-time communications into seamless mobile and web experiences.",
   email: "farhathullahmn@gmail.com",
   phone: "+91 9188044462",
