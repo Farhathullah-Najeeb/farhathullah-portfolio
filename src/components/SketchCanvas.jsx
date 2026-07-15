@@ -59,15 +59,89 @@ export default function SketchCanvas() {
     }
   }, [isSketchMode]);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleTouchStart = (e) => {
+      if (!isSketchMode) return;
+      isDrawing.current = true;
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left + window.scrollX;
+      const y = touch.clientY - rect.top + window.scrollY;
+      lastX.current = x;
+      lastY.current = y;
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDrawing.current || !isSketchMode) return;
+      // Prevent default scrolling gesture on touch screens while drawing
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left + window.scrollX;
+      const y = touch.clientY - rect.top + window.scrollY;
+
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.moveTo(lastX.current, lastY.current);
+      ctx.lineTo(x, y);
+
+      // Apply tools styles
+      if (tool === 'pencil') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = '#27272a';
+        ctx.lineWidth = 2.5;
+      } else if (tool === 'red-pen') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 2.2;
+      } else if (tool === 'highlighter') {
+        ctx.globalCompositeOperation = 'multiply';
+        ctx.strokeStyle = 'rgba(254, 240, 138, 0.45)';
+        ctx.lineWidth = 22;
+      } else if (tool === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.lineWidth = 32;
+      }
+
+      ctx.stroke();
+      
+      lastX.current = x;
+      lastY.current = y;
+    };
+
+    const handleTouchEnd = () => {
+      isDrawing.current = false;
+    };
+
+    // Attach listeners with passive: false to allow blocking standard browser touch scroll
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+    canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+    canvas.addEventListener('touchend', handleTouchEnd);
+    canvas.addEventListener('touchcancel', handleTouchEnd);
+
+    return () => {
+      canvas.removeEventListener('touchstart', handleTouchStart);
+      canvas.removeEventListener('touchmove', handleTouchMove);
+      canvas.removeEventListener('touchend', handleTouchEnd);
+      canvas.removeEventListener('touchcancel', handleTouchEnd);
+    };
+  }, [isSketchMode, tool]);
+
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     isDrawing.current = true;
     
-    // Get mouse/touch coordinates relative to the absolute page layout
+    // Get mouse coordinates relative to the absolute page layout
     const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX || e.touches[0].clientX) - rect.left + window.scrollX;
-    const y = (e.clientY || e.touches[0].clientY) - rect.top + window.scrollY;
+    const x = e.clientX - rect.left + window.scrollX;
+    const y = e.clientY - rect.top + window.scrollY;
     
     lastX.current = x;
     lastY.current = y;
@@ -80,8 +154,8 @@ export default function SketchCanvas() {
     const ctx = canvas.getContext('2d');
     
     const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left + window.scrollX;
-    const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top + window.scrollY;
+    const x = e.clientX - rect.left + window.scrollX;
+    const y = e.clientY - rect.top + window.scrollY;
 
     ctx.beginPath();
     ctx.moveTo(lastX.current, lastY.current);
@@ -131,9 +205,6 @@ export default function SketchCanvas() {
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
-        onTouchStart={startDrawing}
-        onTouchMove={draw}
-        onTouchEnd={stopDrawing}
         className={`absolute top-0 left-0 w-full h-full ${
           isSketchMode ? 'pointer-events-auto z-40 cursor-crosshair' : 'pointer-events-none z-10'
         }`}
