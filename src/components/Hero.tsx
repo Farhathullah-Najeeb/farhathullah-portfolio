@@ -74,16 +74,17 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
 
       {/* portrait */}
       <motion.div
-        className="absolute inset-x-0 top-12 z-[2] flex h-[64svh] items-end justify-center sm:h-[70svh] lg:bottom-0 lg:left-auto lg:right-[3vw] lg:top-20 lg:h-auto lg:w-[54vw] xl:right-[6vw] xl:w-[48vw]"
+        className="absolute inset-x-0 top-12 z-[2] flex h-[64svh] items-end justify-center sm:h-[70svh] lg:bottom-0 lg:left-auto lg:right-[3vw] lg:top-20 lg:h-auto lg:w-[54vw] xl:right-[6vw] xl:w-[48vw] transform-gpu will-change-transform"
         style={{ y: imgY, scale: imgScale, opacity: fade }}
       >
         <motion.div
-          className="relative h-full w-full lg:h-[86vh]"
+          className="relative h-full w-full lg:h-[86vh] transform-gpu will-change-transform"
           style={{ rotateY: imgRotY, rotateX: imgRotX, x: imgShiftX, transformPerspective: 1200 }}
           initial={{ clipPath: 'inset(100% -30% -10% -30%)', opacity: 0 }}
           animate={{ clipPath: 'inset(-30% -30% -10% -30%)', opacity: 1 }}
           transition={{ duration: 1.6, ease: EASE, delay: 0.1 }}
         >
+          
           {/* rim light ring */}
           <div aria-hidden className="absolute bottom-[8%] left-1/2 h-[78%] w-[78%] -translate-x-1/2 rounded-full border border-crimson-2/20 shadow-[0_0_120px_rgba(229,19,43,0.35),inset_0_0_80px_rgba(229,19,43,0.18)]" />
           <img
@@ -91,6 +92,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
             srcSet={profile.portrait.srcSet}
             sizes="(max-width: 1024px) 100vw, 54vw"
             alt={profile.portrait.alt}
+            decoding="async"
             className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] [mask-image:linear-gradient(to_bottom,black_78%,transparent_98%)]"
           />
 
